@@ -115,9 +115,3 @@ def on_rpm_publication_created(sender, instance: RpmPublication, created: bool, 
   if packages:
     logger.debug(f"Payload: {payload}")
     send_webhook(payload)
-
-#
-# Works correctly when
-#
-# pulp -p local rpm repository create --name test
-# pulp -p local rpm distribution create --name testik --base-path testik --repository testik
