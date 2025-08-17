@@ -1,0 +1,22 @@
+[build-system]
+requires = [
+  "setuptools >= 40.8.0",
+  "wheel >= 0.29.0",
+]
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = "pulp_rpm_webhook"
+version = "0.1.0"
+description = "Pulp plugin to trigger webhooks on RPM package uploads"
+dependencies = [
+  "pulpcore>=3.0.0",
+  "pulp_rpm>=3.0.0",
+  "requests>=2.25.0"
+]
+
+[project.entry-points."pulpcore.plugin"]
+pulp_rpm_webhook = "pulp_rpm_webhook:default_app_config"
+
+[tool.setuptools.packages.find]
+where = ["."]
