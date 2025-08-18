@@ -1,2 +1,19 @@
-*.egg-info/
+*.py[co]
 __pycache__
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+pip-wheel-metadata/
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+
+# IDE
+.ropeproject
