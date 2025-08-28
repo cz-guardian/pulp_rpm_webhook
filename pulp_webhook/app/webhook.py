@@ -8,20 +8,20 @@ from django.conf import settings
 logger = logging.getLogger(__name__)
 
 def send_webhook(payload: Dict[str, Any]) -> Optional[int]:
-  url = getattr(settings, "RPM_WEBHOOK_URL", None)
+  url = getattr(settings, "WEBHOOK_URL", None)
   if not url:
-    logger.debug("RPM_WEBHOOK_URL not set; skipping webhook.")
+    logger.debug("WEBHOOK_URL not set; skipping webhook.")
     return None
 
-  secret = getattr(settings, "RPM_WEBHOOK_SECRET", None)
+  secret = getattr(settings, "WEBHOOK_SECRET", None)
   body = json.dumps(payload, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
 
   headers = {
     "Content-Type": "application/json",
-    "User-Agent": "pulp-rpm-webhook/1.0",
+    "User-Agent": "pulp-webhook/1.0",
   }
   if secret:
-    headers['X-PulpRPM-Token'] = secret
+    headers['X-Pulp-Webhook-Token'] = secret
 
   try:
     r = requests.post(url, data=body, headers=headers)

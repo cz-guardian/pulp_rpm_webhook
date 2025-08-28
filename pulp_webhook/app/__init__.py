@@ -1,13 +1,13 @@
 from pulpcore.plugin import PulpPluginAppConfig
 
-class PulpRpmWebhookPluginAppConfig(PulpPluginAppConfig):
+class PulpWebhookPluginAppConfig(PulpPluginAppConfig):
   """
   AppConfig for the pulp_rpm_webhook plugin.
   """
-  name = "pulp_rpm_webhook.app"
-  label = "rpm_webhook"
+  name = "pulp_webhook.app"
+  label = "webhook"
   version = "0.1.0"
-  python_package_name = "pulp_rpm_webhook"
+  python_package_name = "pulp_webhook"
   domain_compatible = True
 
   def ready(self):
